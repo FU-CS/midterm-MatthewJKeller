@@ -128,6 +128,57 @@ public class CompleteBinaryTree {
         }
         return str;
     }
+    public boolean question1(Node root){
+        if (this.root == null) {
+            return true;
+        }
+        else{
+             return this.question1Helper(this.root);
+        }
+    }
+    private boolean question1Helper(Node curr){
+                if (curr.left != null) {
+                    if(curr.left.data > curr.data){
+                        return false;
+                    }
+                    else{
+                        this.question1Helper(curr.left);
+                    }
+                }
+                if (curr.right != null){
+                    if(curr.right.data > curr.data){
+                        return false;
+                    }
+                    else{
+                        this.question1Helper(curr.right);
+                    }
+                }
+                return true;
+        }
+        
+    public CompleteBinaryTree question2(CompleteBinaryTree original){
+        CompleteBinaryTree clone = new CompleteBinaryTree();
+        if (original.getRoot() == null) {
+            return clone;
+        }
+        else{
+            clone.insert(original.getRoot().data);
+            question2Helper(original.getRoot(),clone.getRoot());
+            return clone;
+        }
+        
+    }
+    public void question2Helper(Node originalCurr, Node cloneCurr){
+        if (originalCurr.left != null) {
+            cloneCurr.left = originalCurr.left;
+            this.question2Helper(originalCurr.left, cloneCurr.left);
+        }
+        if (originalCurr.right != null) {
+            cloneCurr.right = originalCurr.right;
+            this.question2Helper(originalCurr.right, cloneCurr.right);
+        }
+    }
+    
 
     public static void main(String[] args) {
         CompleteBinaryTree tree = new CompleteBinaryTree();
