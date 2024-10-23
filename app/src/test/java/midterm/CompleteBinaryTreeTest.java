@@ -131,7 +131,17 @@ class CompleteBinaryTreeTest {
         }
         assertEquals(tree.question1(tree.getRoot()), true, "Should return true");
     }
-   
+    @Test
+    void checkMaxHeapErrorLater(){
+        CompleteBinaryTree tree = new CompleteBinaryTree();
+        tree.insert(50);
+        tree.insert(40);
+        tree.insert(30);
+        tree.insert(20);
+        tree.insert(10);
+        tree.insert(70);
+        assertEquals(tree.question1(tree.getRoot()), false, "Should return false");
+    }
 
     //Question2 Tests
     @Test
